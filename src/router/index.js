@@ -1,5 +1,5 @@
 import vue from 'vue'
-import vuerouter from 'vue-router'
+import vueRouter from 'vue-router'
 
 const Home = () => import('../views/home/Home')
 const Cart = () => import('../views/cart/Cart')
@@ -7,7 +7,7 @@ const Profile = () => import('../views/profile/Profile')
 const Category = () => import('../views/category/Category')
 
 //1.安装插件
-vue.use(vuerouter)
+vue.use(vueRouter)
 
 //创建router
 const routers = [
@@ -32,7 +32,7 @@ const routers = [
         component:Category
     }
 ]
-const router = new vuerouter ({
+const router = new vueRouter ({
     routers,
     mode: 'history'
 
