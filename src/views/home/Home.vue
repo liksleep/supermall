@@ -1,6 +1,9 @@
 <template>
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
+        <swiper>
+            <swiperitem></swiperitem>
+        </swiper>
    </div>
 </template>
 
@@ -8,11 +11,14 @@
 
 import navbar from '@/components/common/nav/navbar'
 import {gethomemultidata} from '@/network/home'
+import {swiper,swiperitem} from '@/components/common/swiper'
 
 export default {
     name:'Home',
     components:{
-        navbar
+        navbar,
+        swiper,
+        swiperitem
     },
     data() {
         return {
