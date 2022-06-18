@@ -14,10 +14,20 @@ export default {
     components:{
         navbar
     },
+    data(){
+        return {
+            //获取返回函数
+           banners: [],
+           recomends: []
+        }
+    },
     created() {
         //1.请求多个数据
         gethomemultidata().then(res => {
-             console.log(res)
+             //调用函数返回
+            //  this.result = res;
+            this.banners = res.data.banner.list;
+            this.recomends = res.data.recomend.list;
         })
     }
 }
