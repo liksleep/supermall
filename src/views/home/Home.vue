@@ -33,11 +33,11 @@ export default {
     },
     created() {
         //1.请求多个数据
-        gethomemultidata().then((res) => {
+        gethomemultidata().then(res => {
              //调用函数返回
             //  this.result = res;
-            this.banners = res;
-            this.recomends = res;
+            this.banners = res.data.banner.list;
+            this.recomends = res.data.recomend.list;
         })
     }
 }
