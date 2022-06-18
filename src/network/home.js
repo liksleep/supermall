@@ -1,6 +1,6 @@
-import { requst} from "./requst";
+import {requst} from "./requst";
 
-export function gethomeMultidata() {
+export function gethomemultidata() {
     return requst ({
         url:'/home/multidata'
     })
