@@ -44,21 +44,3 @@ export function requst(config) {
      return instancel(config)
  }
  
-
-
-// const instancel = axios.create({
-//     baseURL: 'http://123.207.32.32:8000',
-//     timeout:5000
-// })
-
-// instancel(config)
-// .then(res => {
-//     // console.log(res);
-//     success(res)
-// })
-// .catch(err => {
-//     // console.log(err);
-//     failure(err)
-// })
-
-
