@@ -14,7 +14,7 @@ export default {
     components:{
         navbar
     },
-    data(){
+    data() {
         return {
             //获取返回函数
            banners: [],
