@@ -1,3 +1,11 @@
+/*
+ * @Author: liksleep 2103713963@qq.com
+ * @Date: 2022-06-18 10:34:39
+ * @LastEditors: liksleep 2103713963@qq.com
+ * @LastEditTime: 2022-06-18 13:37:38
+ * @FilePath: \vscode\vue\supermall\src\network\requst.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import axios from "axios";
 
 export function requst(config) {
@@ -10,7 +18,7 @@ export function requst(config) {
      //2.axios的拦截器
      //请求拦截
      instancel.interceptors.request.use(config => {
-            console.log(config);
+            // console.log(config);
             //拦截后必须返回(参数)
             return config
     },err => {
@@ -19,11 +27,12 @@ export function requst(config) {
     })
     // 响应拦截
     instancel.interceptors.response.use(res => {
-        console.log(res)
+        return res.data
+        // console.log(res)
     },err => {
         console.log(err)
     })
-     //3.发送真正的网络请求
+    //  3.发送真正的网络请求
      return instancel(config)
  }
  
