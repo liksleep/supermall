@@ -26,8 +26,8 @@ export default {
         gethomemultidata().then(res => {
              //调用函数返回
             //  this.result = res;
-            this.banners = res.data.banner.list;
-            this.recomends = res.data.recomend.list;
+            this.banners = res;
+            this.recomends = res;
         })
     }
 }
