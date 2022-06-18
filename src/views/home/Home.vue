@@ -1,6 +1,6 @@
 <template>
    <div id="home">
-        <navbar><div slot="center">购物车</div></navbar>
+        <navbar class="home-bar"><div slot="center">购物车</div></navbar>
    </div>
 </template>
 
@@ -16,6 +16,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+        .home-bar{
+            background:var(--color-tint);
+            color:#fff;
+            
+        }
 </style>
