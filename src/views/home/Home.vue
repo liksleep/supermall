@@ -2,7 +2,11 @@
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         <swiper>
-            <swiperitem></swiperitem>
+            <swiperitem v-for="item in banner" :key="item-index">
+                <a :href="item.link">
+                    <img :src="item.image" alt="">
+                </a>
+            </swiperitem>
         </swiper>
    </div>
 </template>
@@ -29,7 +33,7 @@ export default {
     },
     created() {
         //1.请求多个数据
-        gethomemultidata().then(res => {
+        gethomemultidata().then((res) => {
              //调用函数返回
             //  this.result = res;
             this.banners = res;
