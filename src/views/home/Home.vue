@@ -35,9 +35,8 @@ export default {
         //1.请求多个数据
         gethomemultidata().then(res => {
              //调用函数返回
-            //  this.result = res.data.data.bannner.list;
-            //  this.result = res.data.data.recommend.list; 
-             return res
+             this.banners = res.data.banner.list;
+             this.recommends = res.data.recommend.list; 
         })
         // }).catch(err => {
         //     console.log(err,'错误了')
