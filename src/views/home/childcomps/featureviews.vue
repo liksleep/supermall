@@ -1,6 +1,6 @@
 <template>
         <div class="featrue">
-            <a href="">
+            <a href="https://act.mogujie.com/zzlx67">
                 <img src="@/assets/image/home/recommend_bg.jpg" alt="">
             </a>
         </div>
@@ -13,6 +13,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+        img {
+            width:100%;
+            height:300px;
+        }
 </style>
