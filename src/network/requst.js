@@ -2,7 +2,7 @@
  * @Author: liksleep 2103713963@qq.com
  * @Date: 2022-06-18 10:34:39
  * @LastEditors: liksleep 2103713963@qq.com
- * @LastEditTime: 2022-06-19 17:12:46
+ * @LastEditTime: 2022-06-19 17:48:17
  * @FilePath: \vscode\vue\supermall\src\network\requst.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,7 +12,7 @@ export function requst(config) {
     //1.创建axios实例
      const instancel = axios.create({
          baseURL: 'http://123.207.32.32:8000',
-         timeout: 1000
+         timeout: 5000
      })
 
      //2.axios的拦截器
