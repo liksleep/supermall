@@ -4,15 +4,20 @@
         <homeswiper :banners="banners"></homeswiper>
         <recommendviews :recommends="recommends"></recommendviews>
         <featureviews></featureviews>
+        <tabcontrol :titles="['流行' , '新款' , '精选']"></tabcontrol>
    </div>
 </template>
 
 <script>
 
-import navbar from '@/components/common/nav/navbar'
 import homeswiper from './childcomps/homeswiper'
 import recommendviews from './childcomps/recommendviews'
 import featureviews from './childcomps/featureviews'
+
+
+import navbar from '@/components/common/nav/navbar'
+import tabcontrol from '@/components/content/tabcontrol/tabcontrol'
+
 
 import {gethomemultidata} from '@/network/home'
 
@@ -20,10 +25,12 @@ import {gethomemultidata} from '@/network/home'
 export default {
     name:'Home',
     components:{
-        navbar,
         homeswiper,
         recommendviews,
-        featureviews
+        featureviews,
+
+        navbar,
+        tabcontrol
     },
     data() {
         return {
