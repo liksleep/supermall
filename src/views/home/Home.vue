@@ -1,28 +1,24 @@
 <template>
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
-        <swiper>
-            <swiperitem v-for="(item, id) in banners" :key="id">
-                <a :href="item.link">
-                    <img :src="item.image" alt="">
-                </a>
-            </swiperitem>
-        </swiper>
+        <homeswiper :banners="banners"></homeswiper>
    </div>
 </template>
 
 <script>
 
 import navbar from '@/components/common/nav/navbar'
+import homeswiper from './childcomps/homeswiper'
+
+
 import {gethomemultidata} from '@/network/home'
-import {swiper,swiperitem} from '@/components/common/swiper'
+
 
 export default {
     name:'Home',
     components:{
         navbar,
-        swiper,
-        swiperitem
+        homeswiper
     },
     data() {
         return {
