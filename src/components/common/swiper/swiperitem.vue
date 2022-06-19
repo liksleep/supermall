@@ -11,9 +11,9 @@ export default {
 </script>
 
 <style scoped>
-    .slide{
-        width:100%;
-        /* fiex-shrink:0; */
+    .slide {
+        width: 100%;
+        flex-shrink: 0;
     }
 
     .swiper img {
