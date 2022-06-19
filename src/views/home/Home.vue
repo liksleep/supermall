@@ -2,6 +2,7 @@
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         <homeswiper :banners="banners"></homeswiper>
+        <recommendviews :recommends="recommends"></recommendviews>
    </div>
 </template>
 
@@ -9,6 +10,7 @@
 
 import navbar from '@/components/common/nav/navbar'
 import homeswiper from './childcomps/homeswiper'
+import recommendviews from './childcomps/recommendviews'
 
 
 import {gethomemultidata} from '@/network/home'
@@ -18,7 +20,8 @@ export default {
     name:'Home',
     components:{
         navbar,
-        homeswiper
+        homeswiper,
+        recommendviews
     },
     data() {
         return {
