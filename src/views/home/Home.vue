@@ -3,6 +3,7 @@
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         <homeswiper :banners="banners"></homeswiper>
         <recommendviews :recommends="recommends"></recommendviews>
+        
    </div>
 </template>
 
