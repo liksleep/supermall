@@ -47,9 +47,17 @@ export default {
 </script>
 
 <style scoped>
+        #home{
+            padding-top:40px;
+        }
         .home-bar{
             background:var(--color-tint);
             color:#fff;
 
+            position:fixed;
+            left:0;
+            top:0;
+            right:0;
+            z-index:9;
         }
 </style>

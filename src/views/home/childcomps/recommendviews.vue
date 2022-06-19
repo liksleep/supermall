@@ -1,7 +1,7 @@
 <template>
         <div class="recommend">
             <!-- 遍历接口recommends -->
-            <div v-for="item in recommends" class="recommend-item" :key="item">
+            <div v-for="(item, index) in recommends" class="recommend-item" :key="index">
             <!-- 双向绑定接口信息 item.link -->
                 <a :href="item.link">
                 <!-- 双向绑定接口信息 item.image -->
