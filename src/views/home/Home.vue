@@ -2,7 +2,7 @@
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         <swiper>
-            <swiperitem v-for="item in banner" :key="item-index">
+            <swiperitem v-for="(item, id) in banners" :key="id">
                 <a :href="item.link">
                     <img :src="item.image" alt="">
                 </a>
@@ -35,8 +35,8 @@ export default {
         //1.请求多个数据
         gethomemultidata().then(res => {
              //调用函数返回
-             this.banners = res.data.banner.list;
-             this.recommends = res.data.recommend.list; 
+             this.banners = res.data.banner.list
+             this.recommends = res.data.recommend.list
         })
         // }).catch(err => {
         //     console.log(err,'错误了')
