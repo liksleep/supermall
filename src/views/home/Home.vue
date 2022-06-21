@@ -2,16 +2,15 @@
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         
-        <div class="wrapper">
-            <div class="content">
+        <scroll>
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
-                <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont" @tabclick="tabclick"></tabcontrol>
+                <tabcontrol :titles="['流行' , '新款' , '精选']" 
+                class="tabcont" @tabclick="tabclick">
+                </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
-            </div>
-        </div>
- 
+        </scroll>
    </div>
 </template>
 
@@ -25,6 +24,7 @@ import featureviews from './childcomps/featureviews'
 import navbar from '@/components/common/nav/navbar'
 import tabcontrol from '@/components/content/tabcontrol/tabcontrol'
 import GoodList from '@/components/content/goods/GoodList'
+import Scroll from '@/components/common/scroll/Scroll'
 
 
 import { gethomemultidata, getHomeGoods }  from '@/network/home'
@@ -38,7 +38,8 @@ export default {
 
         navbar,
         tabcontrol,
-        GoodList
+        GoodList,
+        Scroll
     },
     data() {
         return {
