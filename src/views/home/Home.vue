@@ -1,8 +1,8 @@
 <template>
-   <div id="home">
+   <div id="home" class="wrapper">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         
-        <scroll>
+        <scroll class="content">
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
@@ -123,6 +123,7 @@ export default {
 <style scoped>
         #home{
             padding-top:40px;
+            height:100vh;
         }
         .home-bar{
             background:var(--color-tint);
@@ -142,5 +143,9 @@ export default {
             top:40px;
 
             z-index:10;
+        }
+        .content{
+            height:calc(100% - 93px);
+            overflow: hidden;
         }
 </style>
