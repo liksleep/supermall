@@ -4,8 +4,8 @@
         <homeswiper :banners="banners"></homeswiper>
         <recommendviews :recommends="recommends"></recommendviews>
         <featureviews></featureviews>
-        <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont"></tabcontrol>
-        <GoodList :goods="goods['pop'].list"></GoodList>
+        <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont" @tabclick="tabclick"></tabcontrol>
+        <GoodList :goods="showgoods"></GoodList>
  
    </div>
 </template>
@@ -47,7 +47,14 @@ export default {
             'pop': {page: 0, list: []},
             'new': {page: 0, list: []},
             'sell': {page: 0, list: []},
-           }
+           },
+           currenttype: 'pop'
+       }
+    },
+    // 计算属性
+    computed: {
+        showgoods() {
+            return this.goods[this.currenttype].list
         }
     },
     created() {
@@ -62,6 +69,29 @@ export default {
         // })
     },
     methods: {
+        /**
+         * 事件监听
+         */
+        tabclick(index){
+            // 监听index 循环判断点击拿个
+            switch (index) {
+                case 0:
+                    this.currenttype = 'pop'
+                    break
+                case 1:
+                    this.currenttype = 'new'
+                    break
+                case 2:
+                    this.currenttype = 'sell'
+                    break
+            }
+        },
+
+
+
+        /**
+        *网络请求相关方法
+        * */
         gethomemultidata() {
             gethomemultidata().then(res => {
              //调用函数返回
@@ -93,6 +123,7 @@ export default {
             background:var(--color-tint);
             color:#fff;
 
+            /* 固定定位 */
             position:fixed;
             left:0;
             top:0;
@@ -101,7 +132,7 @@ export default {
         }
 
         .tabcont{
-            /*  */
+            /* 移动到tabcont组件时固定在顶部 */
             position:sticky;
             top:40px;
 
