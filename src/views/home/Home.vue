@@ -5,109 +5,8 @@
         <recommendviews :recommends="recommends"></recommendviews>
         <featureviews></featureviews>
         <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont"></tabcontrol>
-
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <GoodList :goods="goods['pop'].list"></GoodList>
+ 
    </div>
 </template>
 
@@ -120,6 +19,7 @@ import featureviews from './childcomps/featureviews'
 
 import navbar from '@/components/common/nav/navbar'
 import tabcontrol from '@/components/content/tabcontrol/tabcontrol'
+import GoodList from '@/components/content/goods/GoodList'
 
 
 import { gethomemultidata, getHomeGoods }  from '@/network/home'
@@ -133,7 +33,8 @@ export default {
         featureviews,
 
         navbar,
-        tabcontrol
+        tabcontrol,
+        GoodList
     },
     data() {
         return {
@@ -203,5 +104,7 @@ export default {
             /*  */
             position:sticky;
             top:40px;
+
+            z-index:10;
         }
 </style>
