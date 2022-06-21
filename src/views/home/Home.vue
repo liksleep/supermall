@@ -11,7 +11,7 @@
 </template>
 
 <script>
-
+ 
 import homeswiper from './childcomps/homeswiper'
 import recommendviews from './childcomps/recommendviews'
 import featureviews from './childcomps/featureviews'
