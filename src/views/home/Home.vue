@@ -122,7 +122,7 @@ import navbar from '@/components/common/nav/navbar'
 import tabcontrol from '@/components/content/tabcontrol/tabcontrol'
 
 
-import {gethomemultidata} from '@/network/home'
+import { gethomemultidata, getHomeGoods }  from '@/network/home'
 
 
 export default {
@@ -138,20 +138,48 @@ export default {
     data() {
         return {
             //获取返回函数
-           banners:[],
-           recommends:[]
+            // 图片与文字的接口
+           banners: [],
+           recommends: [],
+            //获取数据    
+           goods: {
+            'pop': {page: 0, list: []},
+            'new': {page: 0, list: []},
+            'sell': {page: 0, list: []},
+           }
         }
     },
     created() {
         //1.请求多个数据
-        gethomemultidata().then(res => {
-             //调用函数返回
-             this.banners = res.data.banner.list
-             this.recommends = res.data.recommend.list
-        })
+        this.gethomemultidata()
+        // 请求商品数据
+        this.getHomeGoods('pop')
+        this.getHomeGoods('new')
+        this.getHomeGoods('sell')
         // }).catch(err => {
         //     console.log(err,'错误了')
         // })
+    },
+    methods: {
+        gethomemultidata() {
+            gethomemultidata().then(res => {
+             //调用函数返回
+             // 获取接口
+             this.banners = res.data.banner.list;
+             this.recommends = res.data.recommend.list;
+            })
+        },
+        getHomeGoods(type) {
+            // 获取第一页的数据
+            const page = this.goods[type].page + 1
+            getHomeGoods(type, page).then(res => {
+            // console.log(res)
+            // 拿到数组对象
+            this.goods[type].list.push(...res.data.list)
+            // 拿到第一页数据
+            this.goods[type].page += 1
+          })
+        }
     }
 }
 </script>

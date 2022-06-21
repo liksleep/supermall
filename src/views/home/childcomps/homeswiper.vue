@@ -1,5 +1,6 @@
 <template>
     <swiper>
+        <!-- 使用接口 -->
             <swiperitem v-for="(item, id) in banners" :key="id">
                 <a :href="item.link">
                     <img :src="item.image" alt="">
