@@ -1,11 +1,16 @@
 <template>
    <div id="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
-        <homeswiper :banners="banners"></homeswiper>
-        <recommendviews :recommends="recommends"></recommendviews>
-        <featureviews></featureviews>
-        <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont" @tabclick="tabclick"></tabcontrol>
-        <GoodList :goods="showgoods"></GoodList>
+        
+        <div class="wrapper">
+            <div class="content">
+                <homeswiper :banners="banners"></homeswiper>
+                 <recommendviews :recommends="recommends"></recommendviews>
+                <featureviews></featureviews>
+                <tabcontrol :titles="['流行' , '新款' , '精选']" class="tabcont" @tabclick="tabclick"></tabcontrol>
+                 <GoodList :goods="showgoods"></GoodList>
+            </div>
+        </div>
  
    </div>
 </template>
@@ -23,7 +28,6 @@ import GoodList from '@/components/content/goods/GoodList'
 
 
 import { gethomemultidata, getHomeGoods }  from '@/network/home'
-
 
 export default {
     name:'Home',

@@ -41,66 +41,6 @@
             <li>38</li>
             <li>39</li>
             <li>40</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
         </ul>
     </div>
 </template>
@@ -116,8 +56,16 @@ export default {
         }
     },
     mounted() {
-        this.scroll = new BScroll(document.querySelector('.wrapper'), {
+        this.scroll = new BScroll(document.querySelector('.wrapper'), { 
+        probetype: 1,
+        pullUpLoad: true
 
+        })
+        this.scroll.on('scroll', (position) => {
+            console.log(position)
+        })
+        this.scroll.on('pullingUp', () => {
+            console.log("上拉加载更多")
         })
     }
 }
