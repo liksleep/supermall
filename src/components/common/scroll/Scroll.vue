@@ -17,10 +17,17 @@ export default {
             scroll: null
         }
     },
+    // 组件创建完后调用
     mounted() {
         this.scroll = new BScroll(this.$refs.wrapper, {
 
         })
+        this.scroll.scrollTo(0,0)
+    },
+    methods:{
+        scrollTo(x, y, time=1000) {
+            this.scroll.scrollTo(x, y, time)
+        }
     }
 }
 </script>

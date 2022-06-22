@@ -2,7 +2,7 @@
    <div id="home" class="wrapper">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         
-        <scroll class="content">
+        <scroll class="content" ref="scroll">
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
@@ -11,6 +11,10 @@
                 </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
+
+        <!-- native修饰符 监听组件 -->
+        <back-top @click.native="backclick"/>
+
    </div>
 </template>
 
@@ -25,6 +29,7 @@ import navbar from '@/components/common/nav/navbar'
 import tabcontrol from '@/components/content/tabcontrol/tabcontrol'
 import GoodList from '@/components/content/goods/GoodList'
 import Scroll from '@/components/common/scroll/Scroll'
+import  backTop from  '@/components/content/backTop/backTop'
 
 
 import { gethomemultidata, getHomeGoods }  from '@/network/home'
@@ -39,7 +44,8 @@ export default {
         navbar,
         tabcontrol,
         GoodList,
-        Scroll
+        Scroll,
+        backTop
     },
     data() {
         return {
@@ -91,6 +97,9 @@ export default {
                     break
             }
         },
+        backclick() {
+           this.$refs.scroll.scrollTo(0,0)
+        },
 
 
 
@@ -139,13 +148,20 @@ export default {
 
         .tabcont{
             /* 移动到tabcont组件时固定在顶部 */
-            position:sticky;
+            /* position:sticky; */
             top:40px;
 
             z-index:10;
         }
         .content{
-            height:calc(100% - 93px);
+            /* height:calc(100%); */
+            /* overflow: hidden; */
+
+            position: absolute;
+            top: 44px;
+            bottom: 49px;
+            left:0;
+            right:0;
             overflow: hidden;
         }
 </style>
