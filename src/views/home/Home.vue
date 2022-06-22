@@ -2,18 +2,24 @@
    <div id="home" class="wrapper">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         
-        <scroll class="content" ref="scroll">
+        <!-- @scroll 监听scroll对象-->
+        <scroll class="content" 
+            ref="scroll" 
+            :probe-type="3" 
+            @scroll="contentScroll"
+            :pull-up-load="true"
+            @pullingUp="loadwore">
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
-                <tabcontrol :titles="['流行' , '新款' , '精选']" 
-                class="tabcont" @tabclick="tabclick">
-                </tabcontrol>
+         <tabcontrol :titles="['流行' , '新款' , '精选']" 
+            class="tabcont" @tabclick="tabclick">
+            </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
 
         <!-- native修饰符 监听组件 -->
-        <back-top @click.native="backclick"/>
+        <back-top @click.native="backclick" v-show="isshowbacktop"/>
 
    </div>
 </template>
@@ -59,7 +65,8 @@ export default {
             'new': {page: 0, list: []},
             'sell': {page: 0, list: []},
            },
-           currenttype: 'pop'
+           currenttype: 'pop',
+           isshowbacktop: true
        }
     },
     // 计算属性
@@ -100,6 +107,12 @@ export default {
         backclick() {
            this.$refs.scroll.scrollTo(0,0)
         },
+        contentScroll(position) {
+            this.isshowbacktop = (-position.y) > 600
+        }, 
+        loadwore(){
+            this.getHomeGoods(this.currenttype)
+        },
 
 
 
@@ -123,6 +136,9 @@ export default {
             this.goods[type].list.push(...res.data.list)
             // 拿到第一页数据
             this.goods[type].page += 1
+
+            // 
+            this.$refs.scroll.scroll.finishPullUP()
           })
         }
     }
@@ -154,7 +170,7 @@ export default {
             z-index:10;
         }
         .content{
-            /* height:calc(100%); */
+            /* height:calc(100% - 93px); */
             /* overflow: hidden; */
 
             position: absolute;
