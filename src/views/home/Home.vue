@@ -9,11 +9,13 @@
             @scroll="contentScroll"
             :pull-up-load="true"
             @pullingUp="loadwore">
+            
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
          <tabcontrol :titles="['流行' , '新款' , '精选']" 
-            class="tabcont" @tabclick="tabclick">
+             @tabclick="tabclick"
+              ref="tabcotrol">
             </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
@@ -66,7 +68,8 @@ export default {
             'sell': {page: 0, list: []},
            },
            currenttype: 'pop',
-           isshowbacktop: true
+           isshowbacktop: true,
+           taboffsettoop: 0
        }
     },
     // 计算属性
@@ -78,13 +81,15 @@ export default {
     created() {
         //1.请求多个数据
         this.gethomemultidata()
-        // 请求商品数据
+
+        // 2.请求商品数据
         this.getHomeGoods('pop')
         this.getHomeGoods('new')
         this.getHomeGoods('sell')
         // }).catch(err => {
         //     console.log(err,'错误了')
         // })
+
     },
     methods: {
         /**
@@ -112,6 +117,8 @@ export default {
         }, 
         loadwore(){
             this.getHomeGoods(this.currenttype)
+            // console.log("加载更多")
+            // this.$refs.scroll.refresh()
         },
 
 
@@ -138,7 +145,7 @@ export default {
             this.goods[type].page += 1
 
             // 
-            this.$refs.scroll.scroll.finishPullUP()
+            // this.$refs.scroll.finishPullUp()
           })
         }
     }
@@ -162,13 +169,13 @@ export default {
             z-index:9;
         }
 
-        .tabcont{
+        /* .tabcont{ */
             /* 移动到tabcont组件时固定在顶部 */
             /* position:sticky; */
-            top:40px;
+            /* top:40px;
 
             z-index:10;
-        }
+        } */
         .content{
             /* height:calc(100% - 93px); */
             /* overflow: hidden; */
