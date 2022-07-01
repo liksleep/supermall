@@ -69,14 +69,24 @@ export default {
            },
            currenttype: 'pop',
            isshowbacktop: true,
-           taboffsettoop: 0
+           taboffsettoop: 0,
+        //    saveY: 0
        }
     },
     // 计算属性
     computed: {
         showgoods() {
             return this.goods[this.currenttype].list
-        }
+        },
+        // destroyed() {
+        //     // console.log('destroyed')
+        // },
+        // activated() {
+        //     console.log("active");
+        // },
+        // dactivated() {
+        //     console.log("dactive");
+        // }
     },
     created() {
         //1.请求多个数据
