@@ -10,12 +10,12 @@
             :pull-up-load="true"
             @pullingUp="loadmore">
             
-                <homeswiper :banners="banners"></homeswiper>
+                <homeswiper :banners="banners" @swiperImageLoad="swiperImageLoad"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
                 <featureviews></featureviews>
          <tabcontrol :titles="['流行' , '新款' , '精选']" 
              @tabclick="tabclick"
-              ref="tabcotrol">
+              ref="tabcontrol">
             </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
@@ -68,8 +68,8 @@ export default {
             'sell': {page: 0, list: []},
            },
            currenttype: 'pop',
-           isshowbacktop: true,
-           taboffsettoop: 0,
+           isshowbacktop: false,
+           taboffsetTop: 0,
         //    saveY: 0
        }
     },
@@ -99,10 +99,16 @@ export default {
         // }).catch(err => {
         //     console.log(err,'错误了')
         // })
-        this.$bus.$on('itemImageLoad', () => {
-            this.$refs.scroll.refresh()
-        })
 
+        // this.$bus.$on('itemImageLoad', () => {
+        //     this.$refs.scroll.refresh()
+        // })
+
+    },
+    // 挂载 mounted
+    mounted() {
+        // 获取tabcontrol的offsettop
+        // 所有的组件都有一个属性$el: 用于获取组件中的元素
     },
     methods: {
         /**
@@ -132,6 +138,9 @@ export default {
             this.getHomeGoods(this.currenttype)
             // console.log("加载更多")
             this.$refs.scroll.refresh()
+        },
+        swiperImageLoad() {
+           console.log(this.$refs.tabcontrol.$el.offsetTop)
         },
 
 
