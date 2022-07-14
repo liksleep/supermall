@@ -8,7 +8,7 @@
             :probe-type="3" 
             @scroll="contentScroll"
             :pull-up-load="true"
-            @pullingUp="loadwore">
+            @pullingUp="loadmore">
             
                 <homeswiper :banners="banners"></homeswiper>
                  <recommendviews :recommends="recommends"></recommendviews>
@@ -125,7 +125,7 @@ export default {
         contentScroll(position) {
             this.isshowbacktop = (-position.y) > 600
         }, 
-        loadwore(){
+        loadmore(){
             this.getHomeGoods(this.currenttype)
             // console.log("加载更多")
             // this.$refs.scroll.refresh()
