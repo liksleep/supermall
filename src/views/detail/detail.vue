@@ -30,19 +30,19 @@ export default {
         this.iid = this.$route.params.iid
 
         //2. 获取idd请求的数据
-         getDetail(this.iid).then(res => {
+        //  getDetail(this.iid).then(res => {
+        //     console.log(res);
+
+            // this.topImages = res.result.itemInfo.topImages
+        // })
+    },
+    activated() {
+        getDetail(this.iid).then(res => {
             console.log(res);
 
             // this.topImages = res.result.itemInfo.topImages
         })
     }
-    // activaed() {
-    //     getDetail(this.iid).then(res => {
-    //         console.log(res);
-
-    //         // this.topImages = res.result.itemInfo.topImages
-    //     })
-    // }
 }  
 </script>
 
