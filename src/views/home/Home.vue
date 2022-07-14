@@ -99,6 +99,9 @@ export default {
         // }).catch(err => {
         //     console.log(err,'错误了')
         // })
+        this.$bus.$on('itemImageLoad', () => {
+            this.$refs.scroll.refresh()
+        })
 
     },
     methods: {
@@ -128,7 +131,7 @@ export default {
         loadmore(){
             this.getHomeGoods(this.currenttype)
             // console.log("加载更多")
-            // this.$refs.scroll.refresh()
+            this.$refs.scroll.refresh()
         },
 
 
@@ -154,8 +157,8 @@ export default {
             // 拿到第一页数据
             this.goods[type].page += 1
 
-            // 
-            // this.$refs.scroll.finishPullUp()
+            this.$refs.scroll.finishPullUp()
+            // this.$refs.scroll.scroll.finishPullUp()
           })
         }
     }

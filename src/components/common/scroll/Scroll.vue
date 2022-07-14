@@ -60,9 +60,12 @@ export default {
         scrollTo(x, y, time=1000) {
             this.scroll.scrollTo(x, y, time)
         },
-        // finishPullUp() {
-        //     this.scroll.finishPullUp()
-        // }
+        finishPullUp() {
+            this.scroll.finishPullUp()
+        },
+        refresh() {
+            this.scroll.refresh()
+        }
     }
 }
 </script>
