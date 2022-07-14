@@ -46,7 +46,7 @@ export default {
             height:42px;
         }
          .param-info table tr td{
-            border-bottom:1px solid rgba(100, 100, , alpha);
+            border-bottom:1px solid rgba(100, 100,100,.1 );
          }
 
         .info-param-key{
