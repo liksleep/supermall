@@ -3,7 +3,9 @@ import axios from "axios";
 export function requst(config) {
     //1.创建axios实例
      const instancel = axios.create({
-         baseURL:'http://152.136.185.210:7878/api/hy66',  //'http://123.207.32.32:8000', 
+         baseURL:  
+         'http://152.136.185.210:7878/api/hy66',  
+        //  'http://123.207.32.32:8000', 
          timeout: 5000
      })
 
@@ -14,7 +16,7 @@ export function requst(config) {
             //拦截后必须返回(参数)
             return config
     },err => {
-            // console.log(err)
+        console.log(err)
 
     })
     // 响应拦截
