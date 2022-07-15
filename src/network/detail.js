@@ -1,3 +1,4 @@
+
 import { requst } from "./requst";
 
 export function getDetail(iid) {

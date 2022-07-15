@@ -15,7 +15,8 @@ export function requst(config) {
             // console.log(config);
             //拦截后必须返回(参数)
             return config
-    },err => {
+    }
+    ,err => {
         console.log(err)
 
     })

@@ -14,7 +14,7 @@ export default {
     name:'GoodListItem',
     props: {
         goodsitem: {
-            type:Object,
+            type: Object,
             default() {
                 return {}
             }
