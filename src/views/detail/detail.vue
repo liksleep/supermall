@@ -27,7 +27,7 @@ export default {
             iid: null,
             // res: null,
             topImages: [],
-            goods:null
+            goods: {}
         }
     },
     activated() {
