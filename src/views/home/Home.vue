@@ -182,6 +182,7 @@ export default {
             // this.$refs.scroll.scroll.finishPullUp()
           })
         }
+        
     }
 }
 </script>

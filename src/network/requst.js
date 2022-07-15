@@ -18,16 +18,17 @@ export function requst(config) {
     }
     ,err => {
         console.log(err)
-
     })
     // 响应拦截
     instancel.interceptors.response.use(res => {
+        // console.log(res.data);
         return res.data
-        // console.log(res)
     },err => {
         console.log(err)
     })
+    // )
     //  3.发送真正的网络请求
-     return instancel(config)
+     return instancel(config);
+     
  }
  

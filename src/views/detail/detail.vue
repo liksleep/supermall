@@ -9,13 +9,15 @@
 import detailnavbar from './chilcomptens/detailnavbar'
 import detailswiper from './chilcomptens/detailswiper'
 
-import { getDetail } from '@/network/detail'
+import {getDetail} from '@/network/detail'
 
 export default {
     name:'Detail',
     components: {
         detailnavbar,
         detailswiper
+
+
     },
     data() {
         return {
@@ -24,24 +26,24 @@ export default {
             topImages: []
         }
     },
-    created() {
-        // 1.保存idd位置
-        // console.log(this.$route.params);
+    activated() {
         this.iid = this.$route.params.iid
 
-        //2. 获取idd请求的数据
-         getDetail(this.iid).then(res => {
-            console.log(res);
-
-            // this.topImages = res.result.itemInfo.topImages
-        })
-    },
-    activated() {
         getDetail(this.iid).then(res => {
-            console.log(res);
-
-            // this.topImages = res.result.itemInfo.topImages
+            console.log(res)
         })
+     },
+    created() {
+        // 1.保存idd位置
+        // console.log(this.$route.params.iid);
+        // this.iid = this.$route.params.iid
+
+        // //2. 获取idd请求的数据
+        //  getDetail(this.iid).then(res => {
+        //     console.log(res);
+
+        //     // this.topImages = res.result.itemInfo.topImages
+        // })
     }
 }  
 </script>
