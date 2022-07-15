@@ -1,8 +1,14 @@
 <template>
    <div id="home" class="wrapper">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
+        <tabcontrol :titles="['流行' , '新款' , '精选']" 
+             @tabclick="tabclick"
+              ref="tabcontrol"
+              class="tab-control"
+              v-show="isFixed">
+            </tabcontrol>
         
-        <!-- @scroll 监听scroll对象-->
+        <!-- @scroll 监听scroll对象--> 
         <scroll class="content" 
             ref="scroll" 
             :probe-type="3" 
@@ -15,7 +21,8 @@
                 <featureviews></featureviews>
          <tabcontrol :titles="['流行' , '新款' , '精选']" 
              @tabclick="tabclick"
-              ref="tabcontrol">
+              ref="tabcontrol"
+              :class="{fixed: isFixed}">
             </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
@@ -70,7 +77,8 @@ export default {
            currenttype: 'pop',
            isshowbacktop: false,
            taboffsetTop: 0,
-        //    saveY: 0
+           isFixed: false,
+           saveY: 0
        }
     },
     // 计算属性
@@ -132,7 +140,11 @@ export default {
            this.$refs.scroll.scrollTo(0,0)
         },
         contentScroll(position) {
+            // 1.判断backtop是否显示
             this.isshowbacktop = (-position.y) > 600
+
+            // 2.决定tabcontrol是否吸顶(position: fixed)
+            this.isFixed = (-position.y) > this.taboffsetTop
         }, 
         loadmore(){
             this.getHomeGoods(this.currenttype)
@@ -140,7 +152,7 @@ export default {
             this.$refs.scroll.refresh()
         },
         swiperImageLoad() {
-           console.log(this.$refs.tabcontrol.$el.offsetTop)
+           this.taboffsetTop = this.$refs.tabcontrol.$el.offsetTop
         },
 
 
@@ -176,7 +188,7 @@ export default {
 
 <style scoped>
         #home{
-            padding-top:40px;
+            /* padding-top:40px; */
             height:100vh;
         }
         .home-bar{
@@ -184,11 +196,11 @@ export default {
             color:#fff;
 
             /* 固定定位 */
-            position:fixed;
+            /* position:fixed;
             left:0;
             top:0;
             right:0;
-            z-index:9;
+            z-index:9; */
         }
 
         /* .tabcont{ */
@@ -200,7 +212,7 @@ export default {
         } */
         .content{
             /* height:calc(100% - 93px); */
-            /* overflow: hidden; */
+            overflow: hidden;
 
             position: absolute;
             top: 44px;
@@ -208,5 +220,15 @@ export default {
             left:0;
             right:0;
             overflow: hidden;
+        }
+        .fixed{
+           position:fixed;
+           left:0;
+           right:0;
+           top:44px; 
+        }
+        .tab-control{
+            position: relative;
+            z-index:10;
         }
 </style>
