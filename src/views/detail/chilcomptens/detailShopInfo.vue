@@ -21,6 +21,21 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+        .shop-info{
+            width:100%;
+            position: relative;
+        }
+        .shop-top{
+            width:100%;
+            height:200px;
+            margin-top:100px;
+            border:1px solid red;
+        }
+        .shop-top img{
+            width:60px;
+            height:60px;
+            padding:10px;
+            border-radius:20px;
+        }
 </style>
