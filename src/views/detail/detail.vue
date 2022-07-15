@@ -41,14 +41,14 @@ export default {
     created() {
         // 1.保存idd位置
         // console.log(this.$route.params.iid);
-        // this.iid = this.$route.params.iid
+        this.iid = this.$route.params.iid
 
-        // // //2. 获取idd请求的数据
-        //  getDetail(this.iid).then(res => {
-        //     console.log(res);
+        // //2. 获取idd请求的数据
+         getDetail(this.iid).then(res => {
+            console.log(res);
 
-        //     this.topImages = res.result.itemInfo.topImages
-        // })
+            this.topImages = res.result.itemInfo.topImages
+        })
     }
 }  
 </script>
