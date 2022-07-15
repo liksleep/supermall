@@ -3,6 +3,7 @@
         <detailnavbar/>
         <detailswiper :topImages="topImages"/>
         <detail-base-info :goods="goods"/>
+        <detail-shop-info :shop="shop"/>
     </div>
 </template>
 
@@ -10,24 +11,27 @@
 import detailnavbar from './chilcomptens/detailnavbar'
 import detailswiper from './chilcomptens/detailswiper'
 import detailBaseInfo from './chilcomptens/detailBaseInfo'
+import detailShopInfo from './chilcomptens/detailShopInfo'
 
-import {getDetail, Goods} from '@/network/detail'
+import {getDetail, Goods, Shop} from '@/network/detail'
+import DetailShopInfo from './chilcomptens/detailShopInfo.vue'
 
 export default {
     name:'Detail',
     components: {
-        detailnavbar,
-        detailswiper,
-        detailBaseInfo
-
-
-    },
+    detailnavbar,
+    detailswiper,
+    detailBaseInfo,
+    detailShopInfo,
+    DetailShopInfo
+},
     data() {
         return {
             iid: null,
             // res: null,
             topImages: [],
-            goods: {}
+            goods: {},
+            shop: {}
         }
     },
     activated() {
@@ -58,6 +62,8 @@ export default {
             // 2.获取商品信息
             this.goods = new Goods(data.itemInfo, data.columns, data.shopInfo.services)
 
+            // 3.获取商家信息
+            this.shop = new Shop(data.shopInfo)
         })
     }
 }  
