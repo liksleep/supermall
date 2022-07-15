@@ -21,8 +21,7 @@
                 <featureviews></featureviews>
          <tabcontrol :titles="['流行' , '新款' , '精选']" 
              @tabclick="tabclick"
-              ref="tabcontrol"
-              :class="{fixed: isFixed}">
+              ref="tabcontrol">
             </tabcontrol>
                  <GoodList :goods="showgoods"></GoodList>
         </scroll>
@@ -89,12 +88,12 @@ export default {
         // destroyed() {
         //     // console.log('destroyed')
         // },
-        // activated() {
-        //     console.log("active");
-        // },
-        // dactivated() {
-        //     console.log("dactive");
-        // }
+        activated() {
+            this.$refs.scroll.scrollTo(0, this.saveY, 0)
+        },
+        deactivated() {
+            this.saveY = this.$refs.scroll.scroll.y
+        }
     },
     created() {
         //1.请求多个数据
@@ -225,7 +224,7 @@ export default {
            position:fixed;
            left:0;
            right:0;
-           top:44px; 
+           top:40px; 
         }
         .tab-control{
             position: relative;

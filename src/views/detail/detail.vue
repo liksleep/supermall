@@ -19,8 +19,8 @@ export default {
     },
     data() {
         return {
-            // iid: null
-            // res: null
+            iid: null,
+            res: null,
             // topImages: []
         }
     },
