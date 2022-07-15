@@ -11,7 +11,12 @@
             <span>{{goods.columns[1]}}</span>
             <span>{{goods.services[goods.services.length-1].name}}</span>
         </div>
-
+        <div class="info-service">
+            <span class="info-service-item" v-for="index in goods.services.length-1" :key="index">
+                <img :src="goods.services[index-0].icon" alt="">
+                <span>{{goods.services[index-1].name}}</span>
+            </span>
+        </div>
     </div>
 </template>
 
@@ -76,6 +81,29 @@ export default {
         .info-other span{
             flex:1;
             padding-left:10px;
-            border-bottom:3px solid #ccc;
+            border-bottom:1px solid #ccc;
+        }
+
+        .info-service{
+            width:100%;
+            height:70px;
+            padding-top:10px;
+            border-bottom:4px solid #ccc;
+        }
+        .info-service-item{
+            width:100%;
+            height:80px;
+            font-size:10px;
+        }
+        .info-service-item img {
+            width:16px;
+            height:16px;
+            position: relative;
+            top:6px;
+            margin:4px 4px;
+        }
+        .info-service-item span{
+             padding-right:6px;
+
         }
 </style>
