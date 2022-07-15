@@ -28,6 +28,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .detail-swiper{
+        width:100%;
+        /* position:relative; */
+    }
+    .detail-swiper img {
+        width:100%;
+        height:300px;
+    }
 </style>

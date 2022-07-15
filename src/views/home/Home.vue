@@ -220,7 +220,6 @@ export default {
             bottom: 49px;
             left:0;
             right:0;
-            overflow: hidden;
         }
         .fixed{
            position:fixed;
