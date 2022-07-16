@@ -88,6 +88,7 @@ export default {
         .shop-middle-left{
             padding:10px;
             font-size:18px;
+            color:#000000;
         }
         .sells-text{
             padding-top:15px;
@@ -99,6 +100,7 @@ export default {
             top:-76px;
             left:100px;
             font-size:18px;
+            color:#000000;
             border-right:1px solid #ccc;
         }
         .goods-count{
