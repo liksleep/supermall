@@ -1,4 +1,3 @@
-
 <template>
         <!-- ref 指定该元素-->
         <div class="wrapper" ref="wrapper">
@@ -20,7 +19,7 @@ export default {
         }, 
         pullUpLoad: {
              type: Boolean,
-            default: false
+            default: true
         }
     },
     data() {
