@@ -1,10 +1,10 @@
 <template>
     <div id="detail">
         <scroll class="content">
-        <detailnavbar/>
-        <detailswiper :topImages="topImages"/>
-        <detail-base-info :goods="goods"/>
-        <detail-shop-info :shop="shop"/>
+            <detailnavbar class="detail-navbar"/>
+                <detailswiper :topImages="topImages"/>
+                    <detail-base-info :goods="goods"/>
+                 <detail-shop-info :shop="shop"/>
         </scroll>
     </div>
 </template>
@@ -77,11 +77,17 @@ export default {
 <style scoped>
         #detail{
             position:relative;
-            z-index:10;
+            z-index:9;
             background:#fff;
-            overflow: hidden;
+            height:100vh;
+            overflow:hidden;
         }
         .content{
-            height:calc(100vh - 44px);
+            height: calc(100% - 44px);
+        }
+        .detail-navbar{
+            position:relative;
+            z-index:20;
+            background:#fff;
         }
 </style>

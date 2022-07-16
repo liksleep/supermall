@@ -63,7 +63,7 @@ export default {
         .shop-top{
             width:100%;
             height:100px;
-            margin-top:60px;
+            margin-top:80px;
         }
         .shop-top img{
             width:60px;
