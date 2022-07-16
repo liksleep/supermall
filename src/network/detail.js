@@ -2,7 +2,7 @@
  * @Author: liksleep 2103713963@qq.com
  * @Date: 2022-07-14 15:07:24
  * @LastEditors: liksleep 2103713963@qq.com
- * @LastEditTime: 2022-07-15 22:22:27
+ * @LastEditTime: 2022-07-16 17:20:01
  * @FilePath: \vscode\vue\supermall\src\network\detail.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -36,6 +36,6 @@ export class Shop {
         this.fans = shopInfo.cFans
         this.sells = shopInfo.cSells
         this.score = shopInfo.score
-        this.goodCount = shopInfo.cGoods
+        this.goodsCount = shopInfo.cGoods
     }
 }
