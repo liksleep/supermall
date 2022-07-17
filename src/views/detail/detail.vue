@@ -1,11 +1,12 @@
 <template>
     <div id="detail">
-        <scroll class="content">
+        <scroll class="content" ref="scroll">
             <detailnavbar class="detail-navbar"/>
                 <detailswiper :topImages="topImages"/>
                     <detail-base-info :goods="goods"/>
-                 <detail-shop-info :shop="shop"/>
-                <detail-goods-info :detailInfo="detailInfo"/>
+                <detail-shop-info :shop="shop"/>
+            <detail-goods-info :detailInfo="detailInfo" @imageLoad="imageLoad"/>
+        <detail-param-info :paramInfo="paramInfo"/>
         </scroll>
     </div>
 </template>
@@ -16,11 +17,12 @@ import detailswiper from './chilcomptens/detailswiper'
 import detailBaseInfo from './chilcomptens/detailBaseInfo'
 import detailShopInfo from './chilcomptens/detailShopInfo'
 import detailGoodsInfo from './chilcomptens/detailGoodsInfo'
+import detailParamInfo from './chilcomptens/detailParamInfo'
 
 import Scroll from '@/components/common/scroll/Scroll'
 
-import {getDetail, Goods, Shop} from '@/network/detail'
-import DetailGoodsInfo from './chilcomptens/detailGoodsInfo.vue'
+import {getDetail, Goods, Shop, GoodsParam} from '@/network/detail'
+import DetailParamInfo from './chilcomptens/detailParamInfo.vue'
 
 export default {
     name:'Detail',
@@ -30,8 +32,9 @@ export default {
     detailBaseInfo,
     detailShopInfo,
     detailGoodsInfo,
+    detailParamInfo,
     Scroll,
-    DetailGoodsInfo
+    DetailParamInfo
 },
     data() {
         return {
@@ -40,7 +43,8 @@ export default {
             topImages: [],
             goods: {},
             shop: {},
-            detailInfo: {}
+            detailInfo: {},
+            paramInfo: {}
         }
     },
     activated() {
@@ -76,8 +80,16 @@ export default {
             
             // 4.获取店铺信息
             this.detailInfo = data.detailInfo
+
+            // 5.获取参数信息
+            this.paramInfo = new GoodsParam(data.itemParams.info, data.itemParams.rule)
         })
-    }
+    },
+    methods: {
+        imageLoad() {
+                this.$refs.scroll.refresh()
+            }
+        }
 }  
 </script>
 
