@@ -83,7 +83,7 @@ export default {
             height:160px;
             padding-top:10px;
             position:relative;
-            margin-bottom:30px;
+            margin-bottom:30px; 
         }
         .shop-middle-left{
             padding:10px;

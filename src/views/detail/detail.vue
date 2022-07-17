@@ -5,6 +5,7 @@
                 <detailswiper :topImages="topImages"/>
                     <detail-base-info :goods="goods"/>
                  <detail-shop-info :shop="shop"/>
+                <detail-goods-info :detailInfo="detailInfo"/>
         </scroll>
     </div>
 </template>
@@ -14,10 +15,12 @@ import detailnavbar from './chilcomptens/detailnavbar'
 import detailswiper from './chilcomptens/detailswiper'
 import detailBaseInfo from './chilcomptens/detailBaseInfo'
 import detailShopInfo from './chilcomptens/detailShopInfo'
+import detailGoodsInfo from './chilcomptens/detailGoodsInfo'
 
 import Scroll from '@/components/common/scroll/Scroll'
 
 import {getDetail, Goods, Shop} from '@/network/detail'
+import DetailGoodsInfo from './chilcomptens/detailGoodsInfo.vue'
 
 export default {
     name:'Detail',
@@ -26,9 +29,9 @@ export default {
     detailswiper,
     detailBaseInfo,
     detailShopInfo,
-
-    Scroll
-
+    detailGoodsInfo,
+    Scroll,
+    DetailGoodsInfo
 },
     data() {
         return {
@@ -36,7 +39,8 @@ export default {
             // res: null,
             topImages: [],
             goods: {},
-            shop: {}
+            shop: {},
+            detailInfo: {}
         }
     },
     activated() {
@@ -69,6 +73,9 @@ export default {
 
             // 3.获取商家信息
             this.shop = new Shop(data.shopInfo)
+            
+            // 4.获取店铺信息
+            this.detailInfo = data.detailInfo
         })
     }
 }  
