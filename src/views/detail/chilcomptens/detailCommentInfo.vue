@@ -47,6 +47,68 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+        .info-header{
+            width:94%;
+            margin:0 auto;
+            height:50px;
+            /* line-height:50px; */
+            border-bottom:1px solid #ccc;
+        }
+        .header-title{
+            text-align:left;
+            padding-top:10px;
+            font-size:18px;
+            color: #000;
+        }
+        .header-more{
+            text-align:right;
+            font-size:18px;
+            color: #000;
+            position: relative;
+            top:-20px;
+        }
 
+        .info-user{
+            margin-top:10px;
+            width:100%;
+            height:70px;
+        }
+        .info-user img{
+            width:50px;
+            height:50px;
+            margin:0 10px;
+            border-radius:50%;
+            position:relative;
+            top:10px;
+        }
+        .info-user span{
+            position:relative;
+            top:-10px;
+            font-size:18px;
+            color: #000;
+        }
+
+        .info-detail{
+            width:94%;
+            margin:0 auto;
+            line-height:30px;
+            color:#000;
+        }
+        .info-detail span{
+            color:#ccc;
+            padding-right:10px;
+        }
+        .info-imgs{
+            width:98%;
+            margin:0 auto;
+            height:130px;
+            border-bottom:3px solid #ccc;
+            padding-top:10px;
+        }
+        .info-imgs img{
+            width:100px;
+            height:100px;
+            padding-right:4px;
+        }
 </style>
