@@ -4,10 +4,11 @@
             <detailnavbar class="detail-navbar"/>
                 <detailswiper :topImages="topImages"/>
                     <detail-base-info :goods="goods"/>
-                <detail-shop-info :shop="shop"/>
-            <detail-goods-info :detailInfo="detailInfo" @imageLoad="imageLoad"/>
-        <detail-param-info :paramInfo="paramInfo"/>
-        <detail-comment-info :commentInfo="commentInfo"/>
+                         <detail-shop-info :shop="shop"/>
+                    <detail-goods-info :detailInfo="detailInfo" @imageLoad="imageLoad"/>
+                <detail-param-info :paramInfo="paramInfo"/>
+             <detail-comment-info :commentInfo="commentInfo"/>
+        <good-list :goods="recommends"/>
         </scroll>
     </div>
 </template>
@@ -23,8 +24,10 @@ import detailCommentInfo from './chilcomptens/detailCommentInfo'
 
 
 import Scroll from '@/components/common/scroll/Scroll'
+import GoodList from '@/components/content/goods/GoodList'
 
-import {getDetail, Goods, Shop, GoodsParam} from '@/network/detail'
+import {getDetail, Goods, Shop, GoodsParam, getRecommend} from '@/network/detail'
+
 
 export default {
     name:'Detail',
@@ -38,6 +41,7 @@ export default {
     detailCommentInfo,
     
     Scroll,
+    GoodList
 },
     data() {
         return {
@@ -48,7 +52,8 @@ export default {
             shop: {},
             detailInfo: {},
             paramInfo: {},
-            commentInfo: {}
+            commentInfo: {},
+            recommends: []
         }
     },
     activated() {
@@ -92,6 +97,11 @@ export default {
             if (data.rate.cRate !== 0) {
                 this.commentInfo = data.rate.list[0]
             }
+        }),
+        // 3.请求推荐数据
+        getRecommend().then(res => {
+           this.recommends = res.data.list
+           console.log(res)
         })
     },
     methods: {

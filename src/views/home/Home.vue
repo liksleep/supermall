@@ -94,6 +94,8 @@ export default {
         },
         deactivated() {
             this.saveY = this.$refs.scroll.scroll.y
+
+            this.$bus.$off('itemImageLoad', )
         }
     },
     created() {
@@ -117,6 +119,11 @@ export default {
     mounted() {
         // 获取tabcontrol的offsettop
         // 所有的组件都有一个属性$el: 用于获取组件中的元素
+        // let newRefresh = debouce(this.$refs.scroll.refresh, 100)
+
+        // this.$bus.$on('itemImageLoad', () => {
+        //     newRefresh(20, 30, 'abc')
+        // })
     },
     methods: {
         /**
