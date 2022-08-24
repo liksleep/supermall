@@ -1,7 +1,8 @@
 <template>
     <div id="detail">
-        <scroll class="content" ref="scroll">
-            <detailnavbar class="detail-navbar"/>
+        <detailnavbar class="detail-navbar" @itemClick="itemClick"/>
+            <scroll class="content" ref="scroll"> 
+                <!-- 属性:topImages  传入值: top-images -->
                 <detailswiper :topImages="topImages"/>
                     <detail-base-info :goods="goods"/>
                          <detail-shop-info :shop="shop"/>
@@ -53,7 +54,9 @@ export default {
             detailInfo: {},
             paramInfo: {},
             commentInfo: {},
-            recommends: []
+            recommends: [],
+            // 详情页导航Y值
+            themeTopYs: [0, 1000, 2000, 3000]
         }
     },
     activated() {
@@ -97,6 +100,8 @@ export default {
             if (data.rate.cRate !== 0) {
                 this.commentInfo = data.rate.list[0]
             }
+
+            // 7.
         }),
         // 3.请求推荐数据
         getRecommend().then(res => {
@@ -106,9 +111,14 @@ export default {
     },
     methods: {
         imageLoad() {
-                this.$refs.scroll.refresh()
-            }
-        }
+            this.$refs.scroll.refresh()
+        },
+        itemClick(index) {
+            // 获取index个数,监听点击
+            console.log(index)
+            this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 200)
+         }
+    }
 }  
 </script>
 

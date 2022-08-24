@@ -31,7 +31,8 @@ export default {
     },
     methods: {
         itemClick(index) {
-            this.count = index
+            this.count = index;
+            this.$emit('itemClick', index)
         },
         backClick() {
             this.$router.back()
