@@ -212,12 +212,13 @@ export default {
             height:100vh;
             overflow:hidden;
         }
-        .content{
-            height: calc(100% - 44px);
-        }
+        
         .detail-navbar{
             position:relative;
             z-index:20;
             background:#fff;
+        }
+        .content{
+            height:calc(100vh - 44px);
         }
 </style>
