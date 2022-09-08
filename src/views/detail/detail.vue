@@ -3,11 +3,6 @@
         <detailnavbar class="detail-navbar" @itemClick="itemClick" ref="nav"/>
             <scroll class="content" ref="scroll" :probe-type="3" @scroll="conentscorll"> 
                 <!-- 属性:topImages  传入值: top-images -->
-                <ul>
-                    <li v-for="(item, index) in $store.state.cartList" :key="index">
-                        {{item}}
-                    </li>
-                </ul>
                 <detailswiper :topImages="topImages"/>
                     <detail-base-info :goods="goods"/>
                          <detail-shop-info :shop="shop"/>
@@ -20,6 +15,7 @@
         
 
         <back-top @click.native="backclick" v-show="isshowbacktop"/>
+        <toast :message="message" :show="show"/>
     </div>
 </template>
 
@@ -37,6 +33,7 @@ import  backTop from  '@/components/content/backTop/backTop'
 
 import Scroll from '@/components/common/scroll/Scroll'
 import GoodList from '@/components/content/goods/GoodList'
+import toast from '@/components/common/toast/toast'
 
 import {getDetail, Goods, Shop, GoodsParam, getRecommend} from '@/network/detail'
 
@@ -55,7 +52,8 @@ export default {
     backTop,
     
     Scroll,
-    GoodList
+    GoodList,
+    toast
 },
     data() {
         return {
@@ -73,6 +71,9 @@ export default {
             count:0,
             // [0, 6520, 7320, 8000]
             isshowbacktop: false,
+
+            message:'',
+            show:false
         }
     },
     activated() {
@@ -198,7 +199,17 @@ export default {
 
             // 2.将商品添加到购物车里
             // this.$store.commit('addCart', product)
-            this.$store.dispatch('addCart', product)
+            this.$store.dispatch('addCart', product).then(res => {
+                this.show = true
+                this.message = res
+
+                setTimeout(() => {
+                this.show = false
+                this.message = ''
+                },1500)
+            })
+
+            // 3.添加到购物车成功
          }
          }
 }  

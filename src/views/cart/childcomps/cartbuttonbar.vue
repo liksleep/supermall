@@ -1,7 +1,7 @@
 <template>
     <div class="button-bar">
         <div  class="check-content">
-            <checkbutton class="check-ed"/>
+            <checkbutton class="check-ed" :ischecked="isselecAll" @click.native="checkedClick"/>
             <span>全选</span>
         </div>
 
@@ -18,21 +18,49 @@
 <script>
 import checkbutton from '@/components/content/checkButton/checkbutton';
 
+import { mapGetters } from 'vuex';
+
 export default {
     name:'cartbuttonbar',
     components: {
         checkbutton
     },
     computed:{
+        ...mapGetters([
+        'cartList'
+    ]),
         totalprice(){
-            return '￥' + this.$store.state.cartList.filter(item => {
+            return '￥' + this.cartList.filter(item => {
                 return  item.checked
             }).reduce((preValue, item) => {
-                return item.price * item.count
-            }, 0)
+                return preValue + item.price * item.count
+            }, 0).toFixed(2)
         },
         checkLength() {
-            return this.$store.state.cartList.filter(item => item.checked).length
+            return this.cartList.filter(item => item.checked).length
+        },
+        isselecAll() {
+            // 初始化为false
+            if(this.cartList.length === 0) return false
+            
+            // 1.使用filter
+            // return !(this.cartList.filter(item => !item.checked).length)
+
+
+            // 2.使用find(查找)
+            // 查找不选中
+            return !this.cartList.find(item => !item.checked)
+        }
+    },
+    methods:{
+        checkedClick() {
+            // 全部选中
+            if (this.isselecAll) {  
+                this.cartList.forEach(item => item.checked = false)
+            } else {
+            // 部分或全部不选中
+                this.cartList.forEach(item => item.checked = true)
+            }
         }
     }
 }
