@@ -179,7 +179,7 @@ export default {
             // 获取第一页的数据
             const page = this.goods[type].page + 1
             getHomeGoods(type, page).then(res => {
-            // console.log(res)
+            console.log(res)
             // 拿到数组对象
             this.goods[type].list.push(...res.data.list)
             // 拿到第一页数据
