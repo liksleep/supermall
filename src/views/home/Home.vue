@@ -202,6 +202,7 @@ export default {
         .home-bar{
             background:var(--color-tint);
             color:#fff;
+            font-weight:700;
 
             /* 固定定位 */
             /* position:fixed;

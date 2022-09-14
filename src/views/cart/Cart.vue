@@ -68,7 +68,7 @@ export default {
     .nav-bar{
         background:var(--color-tint);
         color:#fff;
-        /* font-weight:700; */
+        font-weight:700;
     }
     
     .content{
