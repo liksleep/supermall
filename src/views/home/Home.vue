@@ -1,5 +1,5 @@
 <template>
-   <div id="home" class="wrapper">
+   <div id="home" class="wrapper" ref="home">
         <navbar class="home-bar"><div slot="center">购物车</div></navbar>
         <tabcontrol :titles="['流行' , '新款' , '精选']" 
              @tabclick="tabclick"
