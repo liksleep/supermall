@@ -1,48 +1,25 @@
 <template>
-   <div id="category">
-        <navbar class="cat-bar"><div slot="center">商品分类</div></navbar>
-            
-        <categoryries></categoryries>
-    </div> 
+    <div id="cate-gory">
+        <navbar class="nav-bar"><div slot="center">分类</div></navbar>
+    </div>
 </template>
 
 <script>
-import navbar from '@/components/common/nav/navbar.vue'
-
-import categoryries from './childcomps/categoryrise.vue'
-
-import { getCategory } from '@/network/category'
+import navbar from '@/components/common/nav/navbar.vue';
 
 export default {
-    name:'Category',
-    components:{
-      navbar,
-      categoryries
-},
-    data() {
-       return{}
-    },
-    created() {
-      // 1.请求分类数据
-        this._getCategory()
-    },
-    methods:{
-        _getCategory() {
-          getCategory().then(res => {
-            // 1.获取分类数据
-		        this.categories = res.data.category.list
-              console.log(res)
-          })
-      }
+    name: "Category",
+    components: {
+        navbar
     }
-    
 }
 </script>
 
 <style scoped>
-   .cat-bar{
-    font-weight:700;
-    color:#FFF;
-    background: var(--color-tint);
-   }
+    .nav-bar{
+        font-weight:700 ;
+        color:#fff;
+        background:var(--color-tint);
+    }
+
 </style>

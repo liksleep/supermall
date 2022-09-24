@@ -2,7 +2,7 @@
     <div id="profile">
         <navbar class="pro-navbar"><div slot="center">商城</div></navbar>
 
-        <user></user>
+        <user @click.native="userclick"></user>
 
         <div class="my-information">
             <div class="balance">
@@ -51,6 +51,11 @@ export default {
     },
     computed:{
 
+    },
+    methods:{
+        userclick() {
+            console.log("点击了")
+        }
     }
 }
 </script>
